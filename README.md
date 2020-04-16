@@ -9,6 +9,10 @@ census-defined geographies converted from Shapefile format.
 You can query the boundaries.io API for free to retrieve GeoJSON documents with the
 same meta properties as the original shapefiles.
 
+#### Looking to use the API?
+
+[The hosted API is currently out of service](https://github.com/jbielick/boundaries.io/issues/10). If you'd like private or public access, [lease consider sponsoring](https://github.com/sponsors/jbielick).
+
 ![demo](http://i.imgur.com/zNSWIag.gif)
 
 ## API Endpoints
