@@ -11,7 +11,7 @@ export default props => {
         <div
           className={`${
             props.open ? 'fixed bottom-0 inset-x-0' : 'hidden'
-          } animated fadeInUp z-50 shadow-inner max-w-3xl md:relative align-top m-auto justify-end md:justify-center p-8 bg-white md:rounded w-full md:h-auto md:shadow flex flex-col`}
+          } animated fadeInUp z-50 shadow-inner max-w-3xl relative align-top m-auto justify-end md:justify-center p-8 bg-white md:rounded w-full md:h-auto md:shadow flex flex-col`}
         >
           <span className="absolute top-0 right-0 right-0 p-4">
             <svg
