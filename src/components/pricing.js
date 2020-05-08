@@ -110,7 +110,9 @@ export default () => {
                               <polyline points="22 4 12 14.01 9 11.01"></polyline>
                             </svg>
                           </div>
-                          <span className="text-gray-700 text-lg ml-3">{item}</span>
+                          <span className="text-gray-700 text-lg sm:text-sm md:text-sm lg:text-base ml-3">
+                            {item}
+                          </span>
                         </li>
                       ))}
                     </ul>

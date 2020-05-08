@@ -18,7 +18,7 @@ import Fast from '../svg/fast';
 export default () => {
   return (
     <Layout home={true}>
-      <section className="pt-10 md:py-20 relative">
+      <section className="py-10 md:py-20 relative">
         <div className="z-0 absolute bottom-0 right-0 top-0 left-0">
           <Hero />
         </div>
@@ -42,13 +42,12 @@ export default () => {
               Try it before you buy it. No credit card required.
             </p>
           </div>
-          <div className="lg:w-1/2"></div>
         </div>
       </section>
 
-      <section id="features" className="pt-12 lg:pt-20">
+      <section id="features" className="pt-10 lg:pt-20">
         <div className="container px-12 md:px-24 mx-auto">
-          <div className="flex flex-col sm:flex-row sm:-mx-3 mt-12">
+          <div className="flex flex-col sm:flex-row sm:-mx-3 mt-8">
             <div className="flex-1 py-4 px-3">
               <h2 className="text-2xl">
                 <small className="align-middle inline-block">
