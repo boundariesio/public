@@ -1,0 +1,16 @@
+version: "3.5"
+volumes:
+  node-modules:
+services:
+  app:
+    build:
+      context: ./
+      target: builder
+    tty: true
+    stdin_open: true
+    command: npm run develop
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./:/app
+      - node-modules:/app/node_modules
