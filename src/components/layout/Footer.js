@@ -30,7 +30,7 @@ const Footer = () => (
             <a href="https://twitter.com/jbielick">Twitter</a>
           </li>
           <li>
-            <a href="https://github.com/jbielick/boundaries.io">GitHub</a>
+            <a href="https://github.com/boundariesio">GitHub</a>
           </li>
         </ul>
       </div>
