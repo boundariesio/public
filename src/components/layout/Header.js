@@ -7,6 +7,12 @@ const onRoot = () => {
   return typeof window !== 'undefined' && window.location.pathname == '/';
 };
 
+const PricingLink = ({ children }) => (
+  <AnchorLink className="px-4" offset={40} href="#pricing">
+    {children}
+  </AnchorLink>
+);
+
 const Header = () => (
   <header className="sticky top-0 bg-white shadow z-20">
     <div className="container flex flex-col sm:flex-row justify-between items-center mx-auto py-4 px-8">
@@ -26,9 +32,7 @@ const Header = () => (
           </a>
         )}{' '}
         {onRoot() ? (
-          <AnchorLink className="px-4" href="#pricing">
-            Pricing
-          </AnchorLink>
+          <PricingLink>Pricing</PricingLink>
         ) : (
           <a className="px-4" href="/#pricing">
             Pricing
@@ -48,7 +52,15 @@ const Header = () => (
         )}
       </div>
       <div className="hidden md:block">
-        <Button className="text-sm">Get an API key</Button>
+        {onRoot() ? (
+          <PricingLink>
+            <Button className="text-sm">Get an API key</Button>
+          </PricingLink>
+        ) : (
+          <a className="px-4" href="/#pricing">
+            Pricing
+          </a>
+        )}
       </div>
     </div>
   </header>

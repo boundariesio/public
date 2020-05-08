@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import Footer from './Footer';
 import Header from './Header';
@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
           borderRadius: '0.25em',
           backgroundColor: '#7493a4',
           color: 'white',
-          fontSize: '1rem',
+          fontSize: '1rem'
         }}
         expires={150}
       >

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Layout from '../components/layout/Layout';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Button from '../components/Button';
 import CustomerCard from '../components/CustomerCard';
 import LabelText from '../components/LabelText';
 import Hero from '../components/hero';
 import SplitSection from '../components/SplitSection';
 import Pricing from '../components/pricing';
-import Modal from '../components/modal';
 import Support from '../svg/support';
 import customerData from '../data/customer-data';
 import GeoClient from '../svg/geo-client';
@@ -16,24 +16,6 @@ import Data from '../svg/data';
 import Fast from '../svg/fast';
 
 export default () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '//js.hsforms.net/forms/shell.js';
-    script.async = true;
-    script.onload = () => {
-      hbspt.forms.create({
-        portalId: '7630203',
-        formId: '83bf089c-f11a-4b9c-a031-c21c5a419376',
-        target: '#signup',
-      });
-    };
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  const [modalOpen, toggleModal] = useState(false);
   return (
     <Layout>
       <section className="pt-10 md:pt-20 relative">
@@ -50,13 +32,11 @@ export default () => {
               social geographic boundaries.
             </p>
             <p className="mt-8 md:mt-12">
-              <Button
-                onClick={() => toggleModal(true)}
-                size="xl"
-                className="font-bold bg-secondary hover:bg-secondary"
-              >
-                Get an API key
-              </Button>
+              <AnchorLink className="px-4" offset={40} href="#pricing">
+                <Button size="xl" className="font-bold bg-secondary hover:bg-secondary">
+                  Get an API key
+                </Button>
+              </AnchorLink>
             </p>
             <p className="mt-4 text-gray-600">Try it before you buy it. No credit card required.</p>
           </div>
@@ -160,7 +140,7 @@ export default () => {
         <div className="container mx-auto">
           <LabelText className="mb-8 text-gray-600 text-center">What users are saying</LabelText>
           <div className="flex flex-col md:flex-row md:-mx-3">
-            {customerData.map((customer) => (
+            {customerData.map(customer => (
               <div key={customer.customerName} className="flex-1 px-3">
                 <CustomerCard customer={customer} />
               </div>
@@ -171,14 +151,6 @@ export default () => {
       <section id="pricing" className="container max-w-full mx-auto pt-12 px-6">
         <Pricing />
       </section>
-      <Modal open={modalOpen} onClose={() => toggleModal(false)}>
-        <h1 className="text-3xl mb-8">Sign Up</h1>
-        <hr className="py-4" />
-        <h2 className="font-semibold">
-          Use the form below to register. An API key will be sent to you shortly.
-        </h2>
-        <div id="signup" className="mb-12"></div>
-      </Modal>
     </Layout>
   );
 };

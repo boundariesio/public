@@ -12,5 +12,5 @@ services:
     ports:
       - "8001:8001"
     volumes:
-      - ./:/app
+      - .:/app
       - node-modules:/app/node_modules
