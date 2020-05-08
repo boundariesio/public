@@ -55,7 +55,7 @@ const Header = ({ home }) => {
             </PricingLink>
           ) : (
             <a className="px-4" href="/#pricing">
-              Pricing
+              <Button className="text-sm">Get an API key</Button>
             </a>
           )}
         </div>
