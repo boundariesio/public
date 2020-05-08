@@ -18,7 +18,7 @@ const makeFavicon = () => {
   return <link rel="icon" type="image/svg" href={src} />;
 };
 
-const Layout = ({ children }) => {
+const Layout = ({ children, home }) => {
   return (
     <>
       <Helmet title="boundaries.io" defer={false}>
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
         <link rel="canonical" href="https://boundaries.io" />
         {makeFavicon()}
       </Helmet>
-      <Header />
+      <Header home={home} />
       <main className="text-gray-900">{children}</main>
       <Footer />
       <CookieConsent

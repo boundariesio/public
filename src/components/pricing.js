@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from '../components/modal';
 import plans from '../data/plans';
 
-export default ({ onSelect }) => {
+export default () => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = '//js.hsforms.net/forms/shell.js';
@@ -132,7 +132,7 @@ export default ({ onSelect }) => {
             );
           })}
           {Object.keys(plans).map(key => (
-            <Modal open={modals[key].isOpen} onClose={() => modals[key].setOpen(false)}>
+            <Modal key={key} open={modals[key].isOpen} onClose={() => modals[key].setOpen(false)}>
               <h1 className="text-3xl mb-8">Register for API Access</h1>
               <hr className="py-4" />
               <h2 className="font-semibold pb-4">

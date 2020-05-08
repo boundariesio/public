@@ -9,7 +9,7 @@ const PricingLink = ({ children }) => (
   </AnchorLink>
 );
 
-const Header = () => {
+const Header = ({ home }) => {
   return (
     <header className="sticky top-0 bg-white shadow z-20">
       <div className="container flex flex-col sm:flex-row justify-between items-center mx-auto py-4 px-8">
@@ -19,7 +19,7 @@ const Header = () => {
           </div>
         </div>
         <div className="flex mt-4 sm:mt-0">
-          {typeof window !== 'undefined' && window.location.pathname == '/' ? (
+          {home ? (
             <AnchorLink className="px-4" href="#features">
               Features
             </AnchorLink>
@@ -28,7 +28,7 @@ const Header = () => {
               Features
             </a>
           )}{' '}
-          {typeof window !== 'undefined' && window.location.pathname == '/' ? (
+          {home ? (
             <PricingLink>Pricing</PricingLink>
           ) : (
             <a className="px-4" href="/#pricing">
@@ -38,7 +38,7 @@ const Header = () => {
           <a className="px-4" href="/docs">
             API Documentation
           </a>{' '}
-          {typeof window !== 'undefined' && window.location.pathname == '/' ? (
+          {home ? (
             <AnchorLink className="px-4" href="#support">
               Support
             </AnchorLink>
@@ -49,7 +49,7 @@ const Header = () => {
           )}
         </div>
         <div className="hidden md:block">
-          {typeof window !== 'undefined' && window.location.pathname == '/' ? (
+          {home ? (
             <PricingLink>
               <Button className="text-sm">Get an API key</Button>
             </PricingLink>

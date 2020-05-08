@@ -17,7 +17,7 @@ import Fast from '../svg/fast';
 
 export default () => {
   return (
-    <Layout>
+    <Layout home={true}>
       <section className="pt-10 md:pt-20 relative">
         <div className="z-0 absolute bottom-0 right-0 top-0 left-0">
           <Hero />
