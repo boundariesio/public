@@ -3,6 +3,10 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import LogoText from '../../svg/LogoText';
 import Button from '../Button';
 
+const onRoot = () => {
+  return typeof window !== 'undefined' && window.location.pathname == '/';
+};
+
 const Header = () => (
   <header className="sticky top-0 bg-white shadow z-20">
     <div className="container flex flex-col sm:flex-row justify-between items-center mx-auto py-4 px-8">
@@ -12,7 +16,7 @@ const Header = () => (
         </div>
       </div>
       <div className="flex mt-4 sm:mt-0">
-        {window.location.pathname === '/' ? (
+        {onRoot() ? (
           <AnchorLink className="px-4" href="#features">
             Features
           </AnchorLink>
@@ -21,7 +25,7 @@ const Header = () => (
             Features
           </a>
         )}{' '}
-        {window.location.pathname === '/' ? (
+        {onRoot() ? (
           <AnchorLink className="px-4" href="#pricing">
             Pricing
           </AnchorLink>
@@ -33,7 +37,7 @@ const Header = () => (
         <a className="px-4" href="/docs">
           API Documentation
         </a>{' '}
-        {window.location.pathname === '/' ? (
+        {onRoot() ? (
           <AnchorLink className="px-4" href="#support">
             Support
           </AnchorLink>

@@ -21,6 +21,7 @@ export default class Hero extends Component {
     }, 4000);
   };
   render() {
+    if (typeof window == 'undefined') return null;
     return (
       <VectorMap
         animate

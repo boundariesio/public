@@ -17,5 +17,11 @@ module.exports = {
         tailwindConfig: `tailwind.config.js`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-leaflet',
+      options: {
+        linkStyles: true,
+      },
+    },
   ],
 };

@@ -8,7 +8,11 @@ import CookieConsent from 'react-cookie-consent';
 
 const makeFavicon = () => {
   let src = favicon;
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)')) {
+  if (
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme:dark)')
+  ) {
     src = faviconLight;
   }
   return <link rel="icon" type="image/svg" href={src} />;

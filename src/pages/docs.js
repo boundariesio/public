@@ -99,7 +99,7 @@ export default () => {
             </h2>
             <p className="font-light py-2">
               <code>
-                geographies/{'{geography}'}/named/{name}
+                geographies/{'{geography}'}/named/{`{name}`}
               </code>
             </p>
             <p className="font-light py-2">
@@ -125,7 +125,7 @@ export default () => {
             </h2>
             <p className="font-light py-2">
               <code>
-                geographies/{'{geography}'}/named/{name}.svg
+                geographies/{'{geography}'}/named/{'{name}'}.svg
               </code>
             </p>
             <p className="font-light py-2">Parameters:</p>

@@ -5,8 +5,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import MapBoxGLLayer from './mapbox-gl-layer';
 
 const position = [51.505, -0.09];
-const VectorMap = (props) => (
-  <>
+const VectorMap = (props) => {
+  if (typeof window == 'undefined') return null;
+  return (
     <Map
       center={position}
       zoom={9}
@@ -26,7 +27,7 @@ const VectorMap = (props) => (
       />
       {props.children}
     </Map>
-  </>
-);
+  );
+};
 
 export default VectorMap;
