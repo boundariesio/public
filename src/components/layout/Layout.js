@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Header from './Header';
 import favicon from '../../img/favicon.png';
 import faviconLight from '../../img/favicon-light.png';
+import socialImg from '../../img/social.jpg';
 import CookieConsent from 'react-cookie-consent';
 
 const makeFavicon = () => {
@@ -24,6 +25,11 @@ const Layout = ({ children, home }) => {
       <Helmet title="boundaries.io" defer={false}>
         <meta charSet="utf-8" />
         <title>boundaries.io - boundaries made easy</title>
+        <meta name="og:image" content={socialImg} />
+        <meta
+          name="description"
+          content="You query, we deliver. Get accurate GeoJSON features for adminstrative, municipal, and social geographic boundaries."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href="https://boundaries.io" />
         {makeFavicon()}
