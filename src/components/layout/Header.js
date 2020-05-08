@@ -4,7 +4,7 @@ import LogoText from '../../svg/LogoText';
 import Button from '../Button';
 
 const PricingLink = ({ children }) => (
-  <AnchorLink className="px-4" offset={40} href="#pricing">
+  <AnchorLink offset={40} className="px-4" offset={40} href="#pricing">
     {children}
   </AnchorLink>
 );
@@ -15,12 +15,14 @@ const Header = ({ home }) => {
       <div className="container flex flex-col sm:flex-row justify-between items-center mx-auto py-4 px-8">
         <div className="flex items-center">
           <div className="w-56 sm:w-40">
-            <LogoText />
+            <a href="/">
+              <LogoText />
+            </a>
           </div>
         </div>
         <div className="flex mt-4 sm:mt-0">
           {home ? (
-            <AnchorLink className="px-4" href="#features">
+            <AnchorLink offset={40} className="px-4" href="#features">
               Features
             </AnchorLink>
           ) : (
@@ -35,11 +37,11 @@ const Header = ({ home }) => {
               Pricing
             </a>
           )}{' '}
-          <a className="px-4" href="/docs">
-            API Documentation
+          <a className="px-4 hidden md:inline-block" href="/docs">
+            API Docs
           </a>{' '}
           {home ? (
-            <AnchorLink className="px-4" href="#support">
+            <AnchorLink offset={40} className="px-4" href="#support">
               Support
             </AnchorLink>
           ) : (

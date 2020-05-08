@@ -24,6 +24,7 @@ const Layout = ({ children, home }) => {
       <Helmet title="boundaries.io" defer={false}>
         <meta charSet="utf-8" />
         <title>boundaries.io - boundaries made easy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href="https://boundaries.io" />
         {makeFavicon()}
       </Helmet>
