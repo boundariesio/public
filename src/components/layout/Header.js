@@ -11,7 +11,7 @@ const PricingLink = ({ children }) => (
 
 const Header = () => {
   const onRoot = () => {
-    return typeof window !== 'undefined' && window.location.pathname == '/';
+    return typeof window == 'undefined' || window.location.pathname == '/';
   };
   return (
     <header className="sticky top-0 bg-white shadow z-20">
