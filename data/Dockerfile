@@ -1,14 +1,12 @@
-FROM geodata/gdal
+FROM osgeo/gdal:ubuntu-small-latest
 
-USER root
+RUN apt-get install -y curl gnupg jq
 
-RUN apt-get install -y curl
+RUN curl -LSs https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
 
-RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
 
-RUN echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 RUN apt-get install -y \
   make \
@@ -28,6 +26,4 @@ ADD package.json .
 
 RUN npm install
 
-ADD . .
-
-CMD /bin/true
+COPY . .

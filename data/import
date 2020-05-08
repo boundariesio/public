@@ -1,83 +1,81 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const spawn = require('child_process').spawn;
-const optimist = require('optimist');
+const fs = require("fs");
+const path = require("path");
+const spawn = require("child_process").spawn;
+const optimist = require("optimist");
 const argv = optimist
-  .alias('f', 'file')
-  .alias('u', 'url')
-  .alias('s', 'source')
-  .describe('id', 'Unique ID key of the properties object for upserting')
-  .describe('f', 'Import a file')
-  .describe('u', 'Import a url')
-  .describe('s', 'Filter imports by a source (name)')
-  .demand(1)
-  .argv;
+  .alias("f", "file")
+  .alias("u", "url")
+  .alias("s", "source")
+  .describe("id", "Unique ID key of the properties object for upserting")
+  .describe("f", "Import a file")
+  .describe("u", "Import a url")
+  .describe("s", "Filter imports by a source (name)")
+  .demand(1).argv;
 const feature = argv._[0];
-const manifestPath = path.join('.', 'manifests', feature + '.json');
+const manifestPath = path.join(".", "manifests", feature + ".json");
 let chain = Promise.resolve();
 
 if (argv.url) return pipelineImport(argv.url, feature, argv.id);
 
-if (!fs.existsSync(manifestPath)) throw new Error('Unrecognized feature "' + feature + '"');
+if (!fs.existsSync(manifestPath))
+  throw new Error('Unrecognized feature "' + feature + '"');
 
 JSON.parse(fs.readFileSync(manifestPath))
-.filter((config) => {
-  return argv.source ? argv.source === config.source : true;
-})
-.forEach((config) => {
+  .filter((config) => {
+    return argv.source ? argv.source === config.source : true;
+  })
+  .forEach((config) => {
+    config.files.forEach((url) => {
+      chain = chain.then(function () {
+        return new Promise(function (resolve, reject) {
+          console.log("Importing \n\t Source: " + config.source);
 
-  config.files.forEach((url) => {
-    chain = chain.then(function() {
-      return new Promise(function(resolve, reject) {
-
-        console.log('Importing \n\t Source: ' + config.source);
-
-        pipelineImport(url, feature, config.uid, (err, rc) => {
-          if (err) {
-            console.error(`ERROR: ${err.toString()}`)
-            reject(err);
-          }
-          console.log('DONE: ' + url);
-          resolve();
+          pipelineImport(url, feature, config.uid, (err, rc) => {
+            if (err) {
+              console.error(`ERROR: ${err.toString()}`);
+              reject(err);
+            }
+            console.log("DONE: " + url);
+            resolve();
+          });
         });
-
       });
     });
+
+    chain
+      .then(() => {
+        console.log("\n==============\nAll files complete.");
+      })
+      .catch((err) => {
+        console.error(err);
+        process.exit(1);
+      });
   });
 
-  chain.then(() => {
-    console.log('\n==============\nAll files complete.');
-  }).catch((err) => {
-    console.error(err);
-    process.exit(1);
-  })
-});
-
 function pipelineImport(url, collection, idKey, cb) {
+  console.log("<-- " + url);
 
-  console.log('<-- ' + url);
+  if (!idKey) throw new Error("--id is required if not using a manifest");
 
-  if (!idKey) throw new Error('--id is required if not using a manifest');
-
-  var isZip = path.extname(url) === '.zip';
+  var isZip = path.extname(url) === ".zip";
   var isRemote = /[a-z]+:\/\//.test(url);
 
   if (isRemote) url = `/vsicurl/${url}`;
   if (isZip) url = `/vsizip/${url}`;
 
-  url = url.replace(/^(vsizip)\/{2}/, '$1/');
+  url = url.replace(/^(vsizip)\/{2}/, "$1/");
 
-  var pluckStream = spawn('./json_pluck', ['features.*']);
-  var importStream = spawn('./upsert2', [collection, idKey]);
-  var ogrstream = spawn('ogr2ogr', [
-    '-t_srs',
-    'crs:84',
-    '-f',
-    'GeoJSON',
-    '/vsistdout/',
-    url
+  var pluckStream = spawn("./json_pluck", ["features.*"]);
+  var importStream = spawn("./upsert", [collection, idKey]);
+  var ogrstream = spawn("ogr2ogr", [
+    "-t_srs",
+    "crs:84",
+    "-f",
+    "GeoJSON",
+    "/vsistdout/",
+    url,
   ]);
 
   ogrstream.stdout.pipe(pluckStream.stdin);
@@ -89,7 +87,6 @@ function pipelineImport(url, collection, idKey, cb) {
   importStream.stderr.pipe(process.stderr);
 
   importStream
-    .on('exit', (rc) => cb && cb(null, rc))
-    .on('error', (rc) => cb && cb(rc));
-
+    .on("exit", (rc) => cb && cb(null, rc))
+    .on("error", (rc) => cb && cb(rc));
 }

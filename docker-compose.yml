@@ -1,29 +1,60 @@
-version: '2'
+version: "3.5"
+volumes:
+  go-modules:
+  mongodata:
+  client-node-modules:
+  node-modules:
 services:
   api:
-    build: .
-    command: npm start
+    image: jbielick/boundaries.io:2.0-alpha
+    build:
+      context: ./api
+      target: builder
+    tty: true
+    stdin_open: true
+    environment:
+      MONGO_URL: mongodb://root:root@mongo:27017/boundaries?authSource=admin
+      PORT: "8080"
+    command: go run .
     volumes:
-      - .:/app
-      - /app/node_modules
+      - ./api:/app
+      - go-modules:/go/pkg/mod
     ports:
-      - "3334:3334"
+      - "8080:8080"
     links:
       - mongo
-  mongo:
-    image: mongo:3.1.9
-    volumes_from:
-      - data
+  client:
+    image: jbielick/boundaries.io.client:2.0
+    build:
+      context: ./client
+      target: builder
+    tty: true
+    stdin_open: true
+    command: npm run develop
     ports:
-      - "27017:27017"
-  data:
-    image: busybox:latest
+      - "8001:8001"
     volumes:
-      - /data
-  dataconsole:
+      - ./client:/app
+      - client-node-modules:/app/node_modules
+
+  data:
     build: ./data
+    environment:
+      MONGO_URL: mongodb://root:root@mongo:27017/boundaries?authSource=admin
     volumes:
       - ./data:/data
-      - /data/node_modules
+      - node-modules:/data/node_modules
     links:
       - mongo
+
+  mongo:
+    image: mongo:4.2.5
+    command: --wiredTigerCacheSizeGB 1.5
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: boundaries
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"

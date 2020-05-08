@@ -1,0 +1,15 @@
+@tailwind base;
+
+html {
+  @apply font-light;
+}
+a {
+  @apply text-primary;
+}
+a:hover {
+  @apply text-primary-darker;
+}
+
+@tailwind components;
+
+@tailwind utilities;

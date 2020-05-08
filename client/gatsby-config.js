@@ -1,0 +1,21 @@
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          trackingId: 'UA-11539854-15',
+          cookieName: 'gatsby-gdpr-google-analytics',
+          anonymize: true,
+        },
+      },
+    },
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-theme-codebushi`,
+      options: {
+        tailwindConfig: `tailwind.config.js`,
+      },
+    },
+  ],
+};

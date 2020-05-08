@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+const es = require("event-stream");
+const JSONStream = require("JSONStream");
+
+const [, , path, type, displayProperty] = process.argv;
+
+const usage = `
+USAGE:
+  prepare path type
+
+  ex:
+    prepare features.* state
+
+  path: the JSON path to the object to pluck from the stream
+  type: the object type (state, county, postalcode, etc)
+`;
+
+if (!path) {
+  throw new Error(usage);
+}
+
+process.stdin.setEncoding("utf8");
+
+process.stdin
+  .pipe(JSONStream.parse(path))
+  .pipe(
+    es.mapSync(function (document) {
+      document.updatedAt = new Date();
+      document._type = type;
+      document.displayName = ;
+      return document;
+    })
+  )
+  .pipe(JSONStream.stringify())
+  .pipe(process.stdout);
