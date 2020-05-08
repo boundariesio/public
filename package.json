@@ -7,7 +7,7 @@
   "scripts": {
     "develop": "gatsby develop --host 0.0.0.0 --port 8001",
     "build": "gatsby build",
-    "deploy": "gatsby build && gh-pages -d public --no-push -r git@github.com:boundariesio/public.git -m deploy",
+    "deploy": "npm run build && gh-pages -d public -m deploy",
     "start": "gatsby serve --host 0.0.0.0 --port 8001"
   },
   "dependencies": {
