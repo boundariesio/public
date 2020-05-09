@@ -103,7 +103,7 @@ export default () => {
           <div className="lg:pr-32 xl:pr-48">
             <h3 className="text-3xl font-semibold leading-tight">We speak GeoJSON.</h3>
             <p className="mt-8 text-xl font-light leading-relaxed">
-              Let us handle the shapfiles and ogres. All data is returned in GeoJSON (
+              Let us handle the shapefiles and ogres. All data is returned in GeoJSON (
               <code>CRS:84</code>), so it's ready to use in nearly any mapping tool, database, or
               visualization. We can even return TopoJSON if you need smaller data payloads.
             </p>
