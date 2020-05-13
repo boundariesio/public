@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import Footer from './Footer';
 import Header from './Header';
@@ -16,10 +16,21 @@ const makeFavicon = () => {
   ) {
     src = faviconLight;
   }
-  return <link rel="icon" type="image/svg" href={src} />;
+  return <link rel="icon" type="image/png" href={src} />;
 };
 
 const Layout = ({ children, home }) => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.id = 'hs-script-loader';
+    script.src = '//js.hs-scripts.com/7630203.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   return (
     <>
       <Helmet title="boundaries.io" defer={false}>
