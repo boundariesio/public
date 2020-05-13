@@ -48,7 +48,7 @@ const Layout = ({ children, home }) => {
       <Header home={home} />
       <main className="text-gray-900">{children}</main>
       <Footer />
-      <CookieConsent
+      {/* <CookieConsent
         location="bottom"
         buttonText="Okay"
         cookieName="gatsby-gdpr-google-analytics"
@@ -62,7 +62,7 @@ const Layout = ({ children, home }) => {
         expires={150}
       >
         This website uses cookies to enhance the user experience.
-      </CookieConsent>
+      </CookieConsent> */}
     </>
   );
 };
