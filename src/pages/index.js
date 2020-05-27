@@ -28,7 +28,7 @@ export default () => {
               We make geospatial boundary data easy
             </h1>
             <p className="text-xl lg:text-2xl mt-6 font-light">
-              You query, we deliver. Get accurate GeoJSON features for adminstrative, municipal, and
+              You query, we deliver. Get accurate GeoJSON features for administrative, municipal, and
               social geographic boundaries.
             </p>
             <p className="text-center md:text-left mt-8 md:mt-12">
