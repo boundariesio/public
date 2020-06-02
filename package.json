@@ -18,7 +18,7 @@
     "gatsby-plugin-react-leaflet": "^2.0.13",
     "gatsby-theme-codebushi": "1.0.0",
     "leaflet": "^1.6.0",
-    "mapbox-gl": "^1.10.0",
+    "mapbox-gl": "^1.10.1",
     "mapbox-gl-leaflet": "0.0.12",
     "react": "^16.12.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
