@@ -21,12 +21,12 @@ export default class Explore extends Component {
   state = {
     apiKey: '',
     collection: 'places',
-    lat: 35.70017196507861,
-    lng: -78.62021789550783,
+    lat: 37.70017196507861,
+    lng: -94.62021789550783,
     features: {},
     misses: [],
     alerts: [],
-    zoom: 10
+    zoom: 5
   };
 
   miss(latlng) {
@@ -74,7 +74,7 @@ export default class Explore extends Component {
                 }}
                 name="collection"
               >
-                <option value="places">US Places (cities, towns, etc)</option>
+                <option value="places">US Places (cities, towns, CDPs)</option>
                 <option value="postal-codes">US Zip Code Tabulated Areas</option>
                 <option value="counties">US Counties</option>
                 <option value="states">US States</option>
@@ -146,8 +146,8 @@ export default class Explore extends Component {
                     this.miss({ ...e.latlng, collection });
                   } else {
                     this.alert({
-                      message: e.message,
-                      color: 'red'
+                      message: error.message,
+                      color: 'bright'
                     });
                   }
                 });
