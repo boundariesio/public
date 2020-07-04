@@ -110,7 +110,7 @@ export default class Explore extends Component {
               <input
                 id="api-key"
                 className="appearance-none w-9/12 border rounded py-1 px-2 text-gray-600 focus:outline-none"
-                type="text"
+                type="password"
                 value={apiKey}
                 onChange={e => {
                   this.setState({ apiKey: e.target.value });
