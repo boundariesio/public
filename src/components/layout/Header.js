@@ -1,13 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { Link } from 'gatsby';
 import LogoText from '../../svg/LogoText';
 import Button from '../Button';
 
 const PricingLink = ({ children }) => (
-  <AnchorLink offset={40} className="px-4" offset={40} href="#pricing">
+  <AnchorLink offset={40} className="px-4" href="#pricing">
     {children}
   </AnchorLink>
 );
+
+PricingLink.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired
+};
 
 const Header = ({ home }) => {
   return (
@@ -37,18 +43,12 @@ const Header = ({ home }) => {
               Pricing
             </a>
           )}{' '}
-          <a className="px-4 hidden md:inline-block" href="/docs">
+          <Link to="/docs" className="px-4 hidden md:inline-block">
             API Docs
-          </a>{' '}
-          {home ? (
-            <AnchorLink offset={40} className="px-4" href="#support">
-              Support
-            </AnchorLink>
-          ) : (
-            <a className="px-4" href="/#support">
-              Support
-            </a>
-          )}
+          </Link>{' '}
+          <Link to="/explore" className="px-4 hidden md:inline-block">
+            Explore
+          </Link>
         </div>
         <div className="hidden md:block">
           {home ? (
@@ -64,6 +64,14 @@ const Header = ({ home }) => {
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  home: PropTypes.bool
+};
+
+Header.defaultProps = {
+  home: false
 };
 
 export default Header;

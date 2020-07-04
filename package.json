@@ -11,7 +11,7 @@
     "start": "gatsby serve --host 0.0.0.0 --port 8001"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "0.19.2",
     "gatsby": "^2.18.18",
     "gatsby-plugin-gdpr-cookies": "^1.0.7",
     "gatsby-plugin-react-helmet": "^3.3.0",
@@ -20,12 +20,14 @@
     "leaflet": "^1.6.0",
     "mapbox-gl": "^1.10.0",
     "mapbox-gl-leaflet": "0.0.12",
+    "prop-types": "15.7.2",
     "react": "^16.12.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-cookie-consent": "^3.0.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
-    "react-leaflet": "^2.6.3"
+    "react-leaflet": "^2.6.3",
+    "react-transition-group": "4.4.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

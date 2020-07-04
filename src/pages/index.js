@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../components/layout/Layout';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Layout from '../components/layout/Layout';
 import Button from '../components/Button';
 import CustomerCard from '../components/CustomerCard';
 import LabelText from '../components/LabelText';
@@ -17,7 +17,7 @@ import Fast from '../svg/fast';
 
 export default () => {
   return (
-    <Layout home={true}>
+    <Layout home>
       <section className="py-10 md:py-20 relative">
         <div className="z-0 absolute bottom-0 right-0 top-0 left-0">
           <Hero />
@@ -28,8 +28,8 @@ export default () => {
               We make geospatial boundary data easy
             </h1>
             <p className="text-xl lg:text-2xl mt-6 font-light">
-              You query, we deliver. Get accurate GeoJSON features for administrative, municipal, and
-              social geographic boundaries.
+              You query, we deliver. Get accurate GeoJSON features for administrative, municipal,
+              and social geographic boundaries.
             </p>
             <p className="text-center md:text-left mt-8 md:mt-12">
               <AnchorLink className="px-4" offset={40} href="#pricing">

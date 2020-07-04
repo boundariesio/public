@@ -5,7 +5,7 @@ import Header from './Header';
 import favicon from '../../img/favicon.png';
 import faviconLight from '../../img/favicon-light.png';
 import socialImg from '../../img/social.jpg';
-import CookieConsent from 'react-cookie-consent';
+// import CookieConsent from 'react-cookie-consent';
 
 const makeFavicon = () => {
   let src = favicon;

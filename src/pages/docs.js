@@ -12,8 +12,8 @@ export default () => {
             </h1>
             <p className="font-light py-2">
               boundaries.io is an API for retrieving GeoJSON for common US geographic topologies.
-              Data is mostly comprised of US Census TIGER data—yielding up-to-date information on
-              the census-defined geographies converted from Shapefile format.
+              Data is mostly comprised of US Census TIGER data&emdash;yielding up-to-date
+              information on the census-defined geographies converted from Shapefile format.
             </p>
             <p className="font-light py-2">
               You can query the boundaries.io API for free to retrieve GeoJSON documents with the
