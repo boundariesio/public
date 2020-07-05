@@ -7,7 +7,7 @@ class Client {
   constructor() {
     this.http = axios.create({
       baseURL: API_BASE_URL,
-      timeout: 1000,
+      timeout: 5000,
       headers: {
         Accept: 'application/json'
       }
