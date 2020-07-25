@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Modal from '../components/modal';
+import Modal from './modal';
 import plans from '../data/plans';
 
 export default () => {
@@ -12,7 +12,8 @@ export default () => {
         hbspt.forms.create({
           portalId: '7630203',
           formId: plan.formId,
-          target: `#plan-${key}`
+          target: `#plan-${key}`,
+          onFormSubmit: form => {}
         });
       });
     };
@@ -37,9 +38,9 @@ export default () => {
       </h1>
       <p className="text-center text-lg text-gray-700 mt-2 px-6">
         We offer the following plans for API Access. Need additional features or capacity? Send us a
-        message and we'll be happy to work with you.
+        message and we&apos;ll be happy to work with you.
       </p>
-      <div className="h-1 mx-auto bg-primary w-24 opacity-75 mt-4 rounded"></div>
+      <div className="h-1 mx-auto bg-primary w-24 opacity-75 mt-4 rounded" />
       <div className="max-w-full md:max-w-6xl mx-auto my-2 md:px-8 py-6">
         <div className="relative block flex flex-col md:flex-row items-center">
           {Object.entries(plans).map(([key, details], i) => {
@@ -120,8 +121,9 @@ export default () => {
                   <div className="block flex items-center mt-6 uppercase">
                     <button
                       onClick={() => modals[key].setOpen(true)}
+                      type="button"
                       className={`text-lg font-semibold
-	 w-full text-white rounded rounded-t-none
+	w-full text-white rounded rounded-t-none
 	px-6 py-4 block shadow-xl bg-${standard ? 'primary' : 'secondary'} hover:bg-${
                         standard ? 'primary-darker' : 'secondary-darker'
                       }`}
@@ -153,7 +155,7 @@ export default () => {
                   : `After registration, an API key will be sent to you. If you have requests for data
                   that we currently do not offer, please add them to the message field.`}
               </p>
-              <div id={`plan-${key}`} className="mb-12"></div>
+              <div id={`plan-${key}`} className="mb-12" />
             </Modal>
           ))}
         </div>

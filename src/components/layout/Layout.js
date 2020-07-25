@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import CookieConsent from 'react-cookie-consent';
 import Footer from './Footer';
 import Header from './Header';
 import favicon from '../../img/favicon.png';
 import faviconLight from '../../img/favicon-light.png';
 import socialImg from '../../img/social.jpg';
-// import CookieConsent from 'react-cookie-consent';
 
 const makeFavicon = () => {
   let src = favicon;
@@ -48,7 +48,7 @@ const Layout = ({ children, home }) => {
       <Header home={home} />
       <main className="text-gray-900">{children}</main>
       <Footer />
-      {/* <CookieConsent
+      <CookieConsent
         location="bottom"
         buttonText="Okay"
         cookieName="gatsby-gdpr-google-analytics"
@@ -61,8 +61,18 @@ const Layout = ({ children, home }) => {
         }}
         expires={150}
       >
-        This website uses cookies to enhance the user experience.
-      </CookieConsent> */}
+        <p>
+          This website stores cookies on your computer. These cookies are used to improve your
+          website experience and provide more personalized services to you, both on this website and
+          through other media.
+          {/* To find out more about the cookies we use, see our Privacy Policy. */}
+        </p>
+        <p>
+          We won't track your information when you visit our site. But in order to comply with your
+          preferences, we'll have to use just one tiny cookie so that you're not asked to make this
+          choice again.
+        </p>
+      </CookieConsent>
     </>
   );
 };
