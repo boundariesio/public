@@ -14,9 +14,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-11539854-16',
-        head: false,
         anonymize: true,
-        respectDNT: true,
         cookieDomain: 'boundaries.io'
       }
     },
