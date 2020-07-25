@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import Modal from './modal';
 import plans from '../data/plans';
 
@@ -13,7 +14,14 @@ export default () => {
           portalId: '7630203',
           formId: plan.formId,
           target: `#plan-${key}`,
-          onFormSubmit: form => {}
+          onFormSubmit: _ => {
+            trackCustomEvent({
+              category: 'signup',
+              action: 'submit',
+              label: key,
+              value: plan.price
+            });
+          }
         });
       });
     };
