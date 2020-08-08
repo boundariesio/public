@@ -49,10 +49,10 @@ const Layout = ({ children, home }) => {
       <main className="text-gray-900">{children}</main>
       <Footer />
       <CookieConsent
-        location="top"
+        location="bottom"
         buttonText="Accept"
         cookieName="gatsby-gdpr-google-analytics"
-        style={{ background: '#FFFFFF', color: '#2A3E47' }}
+        style={{ background: '#FFFFFF', color: '#2A3E47', paddingRight: '10em', border: '1px solid rgb(200,200,200)' }}
         buttonStyle={{
           borderRadius: '0.25em',
           backgroundColor: '#7493a4',

@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
+import $ from 'jquery';
 import Modal from './modal';
 import plans from '../data/plans';
+
+if (typeof window !== 'undefined') {
+  window.jQuery = $;
+  window.$ = $;
+}
 
 export default () => {
   useEffect(() => {
