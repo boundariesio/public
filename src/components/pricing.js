@@ -3,6 +3,7 @@ import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import $ from 'jquery';
 import Modal from './modal';
 import plans from '../data/plans';
+import RegistrationForm from './registration-form';
 
 if (typeof window !== 'undefined') {
   window.jQuery = $;
@@ -15,21 +16,21 @@ export default () => {
     script.src = '//js.hsforms.net/forms/shell.js';
     script.async = true;
     script.onload = () => {
-      Object.entries(plans).forEach(([key, plan]) => {
-        hbspt.forms.create({
-          portalId: '7630203',
-          formId: plan.formId,
-          target: `#plan-${key}`,
-          onFormSubmit: _ => {
-            trackCustomEvent({
-              category: 'signup',
-              action: 'submit',
-              label: key,
-              value: plan.price
-            });
-          }
-        });
-      });
+      // Object.entries(plans).forEach(([key, plan]) => {
+      //   hbspt.forms.create({
+      //     portalId: '7630203',
+      //     formId: plan.formId,
+      //     target: `#plan-${key}`,
+      //     onFormSubmit: _ => {
+      //       trackCustomEvent({
+      //         category: 'signup',
+      //         action: 'submit',
+      //         label: key,
+      //         value: plan.price
+      //       });
+      //     }
+      //   });
+      // });
     };
     document.body.appendChild(script);
     return () => {
@@ -37,14 +38,9 @@ export default () => {
     };
   }, []);
 
-  const modals = {};
-  Object.keys(plans).forEach(key => {
-    const [isOpen, setOpen] = useState(false);
-    modals[key] = {
-      isOpen,
-      setOpen
-    };
-  });
+  const [isOpen, setOpen] = useState(false);
+  const [chosenKey, setChosenKey] = useState(null);
+
   return (
     <>
       <h1 className="text-center text-4xl text-black font-medium leading-snug tracking-wider">
@@ -121,8 +117,8 @@ export default () => {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             >
-                              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                              <polyline points="22 4 12 14.01 9 11.01" />
                             </svg>
                           </div>
                           <span className="text-gray-700 text-lg sm:text-sm md:text-sm lg:text-base ml-3">
@@ -134,7 +130,10 @@ export default () => {
                   </div>
                   <div className="block flex items-center mt-6 uppercase">
                     <button
-                      onClick={() => modals[key].setOpen(true)}
+                      onClick={() => {
+                        setOpen(true);
+                        setChosenKey(key);
+                      }}
                       type="button"
                       className={`text-lg font-semibold
 	w-full text-white rounded rounded-t-none
@@ -149,29 +148,22 @@ export default () => {
               </div>
             );
           })}
-          {Object.keys(plans).map(key => (
-            <Modal key={key} open={modals[key].isOpen} onClose={() => modals[key].setOpen(false)}>
-              <h1 className="text-3xl mb-8">Register for API Access</h1>
-              <hr className="py-4" />
-              <h2 className="font-semibold pb-4">
-                Please use the form below to register for{' '}
-                <span className="font-medium uppercase px-1 pb-0 text-center tracking-wide">
-                  {plans[key].name}
-                </span>
-                level access.
-              </h2>
-              <p className="pb-4">
-                {plans[key].price > 0
+          {plans[chosenKey] && (
+            <Modal open={isOpen && chosenKey} onClose={() => setOpen(false)}>
+              <h3 className="text-xl mb-2">Register for {plans[chosenKey].name} API Access</h3>
+              <hr className="py-2" />
+              <RegistrationForm plan={plans[chosenKey]} />
+              {/* <p className="pb-4">
+                {plans[chosenKey].price > 0
                   ? `After registration, a secure checkout form will be sent to you.
                   Upon payment, you will receive an API access key. If you have requests for
                   data that we currently do not offer, please add them
                   to the message field.`
                   : `After registration, an API key will be sent to you. If you have requests for data
                   that we currently do not offer, please add them to the message field.`}
-              </p>
-              <div id={`plan-${key}`} className="mb-12" />
+              </p> */}
             </Modal>
-          ))}
+          )}
         </div>
       </div>
     </>

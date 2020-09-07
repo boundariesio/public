@@ -1,7 +1,8 @@
 import React from 'react';
 import { RedocStandalone } from 'redoc';
-import Layout from '../components/layout/Layout';
+
 import spec from '../data/openapi.yaml';
+import Layout from '../components/layout/public';
 
 export default () => {
   return (

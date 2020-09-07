@@ -1,6 +1,6 @@
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/layout/public';
 import Button from '../components/Button';
 import CustomerCard from '../components/CustomerCard';
 import LabelText from '../components/LabelText';

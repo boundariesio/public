@@ -49,6 +49,9 @@ const Header = ({ home }) => {
           <Link to="/explore" className="px-4 hidden md:inline-block">
             Explore
           </Link>
+          <Link to="/login" className="px-4">
+            Login
+          </Link>
         </div>
         <div className="hidden md:block">
           {home ? (
