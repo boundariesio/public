@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://api.boundaries.io';
+const API_BASE_URL = 'https://api2.boundaries.io';
 // const API_BASE_URL = 'http://localhost:3334';
 
 class Client {

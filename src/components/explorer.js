@@ -78,6 +78,7 @@ export default class Explore extends Component {
                 <option value="postal-codes">US Zip Code Tabulated Areas</option>
                 <option value="counties">US Counties</option>
                 <option value="states">US States</option>
+                <option value="neighborhoods">US Neighborhoods</option>
               </select>
             </div>
             <div>
@@ -169,7 +170,6 @@ export default class Explore extends Component {
             />
             {misses
               .filter(({ collection }) => {
-                console.log(collection, this.state.collection);
                 return collection === this.state.collection;
               })
               .map(({ lat, lng }) => (
