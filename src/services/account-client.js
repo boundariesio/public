@@ -22,12 +22,13 @@ class AccountClient {
     });
   }
 
-  register({ firstName, lastName, email, zip }) {
+  register({ firstName, lastName, productId, email, zip }) {
     return this.http.post('/accounts', {
       firstName,
       lastName,
       email,
-      zip
+      zip,
+      productId
     });
   }
 }

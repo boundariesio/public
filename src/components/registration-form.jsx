@@ -9,11 +9,13 @@ const accountClient = new AccountClient();
 const propTypes = {
   plan: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired
+    price: PropTypes.number.isRequired,
+    productId: PropTypes.string.isRequired
   }).isRequired
 };
 
 const RegistrationForm = ({ plan }) => {
+  const { productId } = plan;
   const [sending, setSending] = useState(false);
   const [valid, setValid] = useState(false);
   const [email, setEmail] = useState('');
@@ -36,9 +38,10 @@ const RegistrationForm = ({ plan }) => {
         </p>
       </Tip>
       <form
+        id="signup"
         className="w-full max-w-lg py-4 mx-auto"
-        onSubmit={async e => {
-          e.preventDefault();
+        onSubmit={async evt => {
+          evt.preventDefault();
           setError(null);
           setSending(true);
           try {
@@ -46,11 +49,12 @@ const RegistrationForm = ({ plan }) => {
               firstName,
               lastName,
               email,
-              zip
+              zip,
+              productId
             });
-          } catch (error) {
-            setError(error);
-            console.error(error);
+          } catch (er) {
+            setError(er);
+            console.error(er);
           } finally {
             setSending(false);
           }
