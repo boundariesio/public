@@ -1,0 +1,324 @@
+openapi: 3.0.3
+
+info:
+  version: 'v1'
+  title: boundaries.io Feature API
+  description: |
+    <br />
+    boundaries.io is an API for retrieving GeoJSON for common
+    US geographic topologies. Data is mostly comprised of US Census
+    TIGER data—yielding up-to-date information on the
+    census-defined geographies converted from Shapefile format.
+    <br /><br />
+    The API responds in `application/json` for all requests. Authentication is
+    required for all endpoints.
+    <br /><br />
+    The v1 API can be accessed at <strong>https://api.boundaries.io</strong>
+# ![demo](http://i.imgur.com/zNSWIag.gif)
+
+servers:
+  - url: https://api.boundaries.io
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  '/geographies/{type}/whereami':
+    get:
+      tags: ['Feature Queries']
+      summary: 'whereami: Find the feature that contains a given point'
+      description: |
+        Given a reference point (coordinate pair), this endpoint will
+        return the feature geometry that _contains_ that reference point.
+        <br /><br />
+        When querying the whereami endpoint, the geography that contains
+        the provided latitude/longitude pair will be returned if found.
+        For example, when requesting `geographies/postal-codes/whereami?lat=36.011616617997426&lng=-78.9103317260742`,
+        the postal-code feature for zip code `27701` will be
+        returned as the lat/lng pair in the query is contained in
+        the postal-code geography 27701. If you query the `states` collection
+        with the same coordinate pair, the corresponding state feature found
+        would be North Carolina.
+      parameters:
+        - name: type
+          in: path
+          description: Feature collection to query
+          required: true
+          schema:
+            $ref: '#/components/schemas/FeatureType'
+        - name: lat
+          in: query
+          description: Latitude of reference point
+          required: true
+          schema:
+            type: number
+        - name: lng
+          in: query
+          description: Longitude of reference point
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          $ref: '#/components/responses/FoundFeatureWithTopojson'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  '/geographies/{type}/nearme':
+    get:
+      tags: ['Feature Queries']
+      summary: 'nearme: Retrieve features in proximity to a given point'
+      description: |
+        Given a reference point (coordinate pair), this endpoint
+        will return the features _near_ the given reference point.
+      parameters:
+        - name: type
+          in: path
+          description: Feature collection to query
+          required: true
+          schema:
+            $ref: '#/components/schemas/FeatureType'
+        - name: lat
+          in: query
+          description: Latitude of reference point
+          required: true
+          schema:
+            type: number
+        - name: lng
+          in: query
+          description: Longitude of reference point
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Found features
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureList'
+  '/geographies/{type}':
+    get:
+      tags: ['Feature Queries']
+      summary: 'search: Search for features by property text'
+      description: |
+        Geographies can be searched by text, match against features'
+        `properties`.
+        <br /><br />
+        This is helpful as the property names for certain geographies can
+        be very specific in nature to the geography or datasource. For
+        instance, a common 5-digit US postal code is contained in the
+        property `properties.ZCTA5CE10` in the postal-codes geography.
+        <br /><br />
+        In order to not keep track of specific collection-based property names
+        like `ZCTA5CE10`, a search parameter can be used to find all features
+        matching the given query.
+      parameters:
+        - name: type
+          in: path
+          description: Feature collection to query
+          required: true
+          schema:
+            $ref: '#/components/schemas/FeatureType'
+        - name: search
+          in: query
+          required: true
+          description: Search terms (logical OR matching)
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  '/geographies/{type}/named/{nameid}':
+    get:
+      tags: ['Feature Queries']
+      summary: 'named: Retrieve a feature by NAMEID'
+      description: |
+        The typical name property for features from the US Census TIGER
+        shapefiles is `properties.NAME`, but for postal-codes is
+        `properties.ZCTA5CE10`. Features can be queried by this property
+        via this endpoint.
+        <br /><br />
+        By making a request to the `named` endpoint, a feature collection
+        can be queried by its common name property.
+        For postal codes this is the 5-digit common code.
+        For states this is the state name as it comes from the data source.
+        For fuzzy matching of name, please use the `search` endpoint.
+      parameters:
+        - name: type
+          in: path
+          description: Feature collection to query
+          required: true
+          schema:
+            $ref: '#/components/schemas/FeatureType'
+        - name: nameid
+          in: path
+          description: Feature property NAMEID
+          required: true
+          schema:
+            type: string
+            example: Texas
+      responses:
+        '200':
+          description: Found feature
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feature'
+            application/topojson:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+components:
+  responses:
+    FoundFeature:
+      description: Found feature
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Feature'
+    SearchResults:
+      description: Search results
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SearchResults'
+    FoundFeatureWithTopojson:
+      description: Found feature
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Feature'
+        application/topojson:
+          schema:
+            $ref: '#/components/schemas/TopojsonFeatureCollection'
+    NotFoundError:
+      description: No feature found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    FeatureType:
+      title: Feature type
+      type: string
+      enum:
+        - postal-codes
+        - states
+        - counties
+        - places
+        - neighborhoods
+    Feature:
+      title: Feature
+      type: object
+      properties:
+        _id:
+          type: string
+          example: '55b3b258799bfce45b3e6fc6'
+        properties:
+          description: |
+            Metadata and descriptive properties of the feature
+          type: object
+          example:
+            REGION: '3'
+            DIVISION: '7'
+            STATEFP: '48'
+            STATENS: '01779801'
+            GEOID: '48'
+            STUSPS: 'TX'
+            NAME: 'Texas'
+            LSAD: '00'
+            MTFCC: 'G4000'
+            FUNCSTAT: 'A'
+            ALAND: 676668210823
+            AWATER: 18991880422
+            INTPTLAT: '+31.4347032'
+            INTPTLON: '-099.2818238'
+        geometry:
+          description: 'GeoJSON geometry object'
+          type: object
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: string
+          example:
+            type: Polygon
+            coordinates:
+              [[[-103.9801798, 32.0001252], [-103.9815638, 32.0001242], [-103.9834128, 32.0001222]]]
+    FeatureList:
+      title: Feature List
+      type: array
+      items:
+        $ref: '#/components/schemas/Feature'
+    SearchResults:
+      title: Search Results
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchResult'
+    SearchResult:
+      allOf:
+        - $ref: '#/components/schemas/Feature'
+        - type: object
+          properties:
+            score:
+              type: number
+              example: 1.5
+    TopojsonFeatureCollection:
+      type: object
+      example:
+        type: Topology
+        objects:
+          collection:
+            type: GeometryCollection
+            geometries:
+              - _id: 55b3b258799bfce45b3e6fc6
+                type: Polygon
+                arcs:
+                  - - 0
+        arcs:
+          - - - 2029
+              - 5779
+            - - -1
+              - 0
+            - - -2
+              - 0
+            - - -1
+              - 0
+            - - -1
+              - 0
+            - - -1
+              - 0
+        transform:
+          scale:
+            - 0.0013138920392039208
+            - 0.0010664606160616069
+          translate:
+            - -106.6456462
+            - 25.837161
+        bbox:
+          - -106.6456462
+          - 25.837161
+          - -93.5080397
+          - 36.5007007
+
+    Error:
+      title: Error
+      type: object
+      example:
+        error: Not Found
+      properties:
+        error:
+          type: string
+          example: Not Found
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: |
+        An API Key is required for all requests. To obtain access,
+        please <a target="_blank" rel="nofollow" href="https://boundaries.io/#pricing">register</a>.
+        The API Key should be provided in an HTTP header named `x-api-key`.
