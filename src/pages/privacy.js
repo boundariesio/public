@@ -5,7 +5,7 @@ export default () => {
   return (
     <Layout>
       <div className="container mx-auto py-5 max-w-4xl">
-        <h1 className="text-3xl font-semibold border-b my-4 pb-4">Terms and Conditions</h1>
+        <h1 className="text-3xl font-semibold border-b my-4 pb-4">Privacy Policy</h1>
         <small className="italic">Revised as of September 7, 2020</small>
         <p className="py-2">
           THE WEBSITE boundaries.io (THE &quot;SITE&quot;) AND RELATED PLATFORMS, PRODUCTS, AND
