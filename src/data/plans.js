@@ -22,7 +22,6 @@ export default {
     features: [
       'Access to the most up-to-date data and premium API',
       'Standard support',
-      'Request Priority (QoS)',
       '1K requests per day'
     ],
     formId: '620bf43e-a2bf-4c71-86a8-ed53d5b236fa'
@@ -36,7 +35,6 @@ export default {
     features: [
       'Access to the most up-to-date data and premium API',
       'Premium Support',
-      'Highest Request Priority (QoS)',
       '100K requests per day'
     ],
     formId: 'c4e48a0b-4904-4a7f-8825-bf846cd152a0'
