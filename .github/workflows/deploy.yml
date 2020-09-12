@@ -21,3 +21,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm run deploy
+        env:
+          API_URL: https://api2.boundaries.io
+          ADMIN_URL: https://admin.boundaries.io

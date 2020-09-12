@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://api2.boundaries.io';
-// const API_BASE_URL = 'http://localhost:3334';
-
 class Client {
   constructor() {
     this.http = axios.create({
-      baseURL: API_BASE_URL,
+      baseURL: process.env.API_URL,
       timeout: 5000,
       headers: {
         Accept: 'application/json'

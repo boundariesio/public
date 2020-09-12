@@ -1,5 +1,9 @@
 const path = require('path');
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 // https://github.com/Redocly/redoc/issues/997
 // which leads to this:
 // https://github.com/gatsbyjs/gatsby/issues/17136#issuecomment-568036690
