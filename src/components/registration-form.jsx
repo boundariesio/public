@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import Button from './Button';
 import Tip from './tip';
 import AccountClient from '../services/account-client';
@@ -46,6 +47,12 @@ const RegistrationForm = ({ plan }) => {
           setError(null);
           setSending(true);
           try {
+            trackCustomEvent({
+              category: 'signup',
+              action: 'submit',
+              label: productId,
+              value: plan.price / 100
+            });
             await accountClient.register({
               firstName,
               lastName,
