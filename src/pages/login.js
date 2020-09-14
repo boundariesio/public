@@ -8,7 +8,7 @@ const accountClient = new AccountClient();
 
 export default () => {
   let initialInfo;
-  if (/failed=1/.test(window.location.search)) {
+  if (typeof window !== 'undefined' && /failed=1/.test(window.location.search)) {
     initialInfo = 'Your login link expired or an error occurred. Please login again.';
   }
   const [sending, setSending] = useState(false);
