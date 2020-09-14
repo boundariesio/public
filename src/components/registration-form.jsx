@@ -23,6 +23,7 @@ const RegistrationForm = ({ plan }) => {
   const [lastName, setLastName] = useState('');
   const [zip, setZip] = useState('');
   const [error, setError] = useState(null);
+  const [successful, setSuccessful] = useState(false);
   useEffect(() => {
     const allPresent =
       firstName.length >= 2 && lastName.length >= 2 && email.length >= 4 && zip.length >= 5;
@@ -39,19 +40,20 @@ const RegistrationForm = ({ plan }) => {
       </Tip>
       <form
         id="signup"
-        className="w-full max-w-lg py-4 mx-auto"
+        className="w-full py-4 mx-auto"
         onSubmit={async evt => {
           evt.preventDefault();
           setError(null);
           setSending(true);
           try {
-            const response = await accountClient.register({
+            await accountClient.register({
               firstName,
               lastName,
               email,
               zip,
               productId
             });
+            setSuccessful(true);
           } catch (er) {
             setError(er);
             console.error(er);
@@ -134,28 +136,37 @@ const RegistrationForm = ({ plan }) => {
             />
           </div>
         </div>
-        <div className="text-xs pb-4">
-          <p>
-            In submitting this form, you acknowledge you have read and agreed to our{' '}
+        <div className="flex justify-center">
+          {error && (
+            <Tip color="red" className="text-xs text-red-500 pb-4" label="Error:">
+              <p>
+                Uh oh. Something went wrong when submitting your information. Please try again.
+                <br />
+                Message:{' '}
+                {error.response.data.error ? error.response.data.error : error.response.data}
+              </p>
+            </Tip>
+          )}
+          {successful && (
+            <Tip color="green" className="font-semibold pb-4" label="Registration Complete:">
+              <p>Your API key is on the way! Please check your email inbox.</p>
+            </Tip>
+          )}
+        </div>
+        <div className="flex justify-center">
+          <p className="text-xs text-right pr-3 pt-2">
+            By submitting this form, you acknowledge you have read and agreed to our{' '}
             <a href="/terms">Terms and Conditions</a> and <a href="/privacy">Privacy Policy</a>.
           </p>
-        </div>
-        {error && (
-          <Tip color="red" className="text-xs text-red-500" label="Error:">
-            <p>
-              Uh oh. Something went wrong when submitting your information. Please try again.
-              <br />
-              Message: {error.message}
-            </p>
-          </Tip>
-        )}
-        <div className="flex">
+          <br />
           <Button
             type="submit"
-            className={`${!valid || sending ? 'opacity-50 cursor-not-allowed' : ''}`}
-            disabled={!valid || sending}
+            className={`w-1/2 ${
+              !valid || sending || successful ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            disabled={!valid || sending || successful}
           >
-            Register
+            {successful ? 'All set!' : 'Register'}
           </Button>
         </div>
       </form>

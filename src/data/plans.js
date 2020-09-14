@@ -3,7 +3,7 @@ export default {
     name: 'Hobby',
     priceDisplay: 'FREE',
     price: 0,
-    productId: 'hobby',
+    productId: process.env.HOBBY_ID,
     description:
       'Get full access to build your Proof of Concept, test an idea, or use the data on a personal project.',
     features: [
@@ -18,7 +18,7 @@ export default {
     name: 'Standard',
     priceDisplay: '29',
     price: 1900,
-    productId: 'prod_HF6rRP9UV7qxiC',
+    productId: process.env.STANDARD_ID,
     description:
       "Ready to use this API in production? We've got you. Subscribe to standard and make sure things are always running smoothly.",
     features: [
@@ -31,7 +31,7 @@ export default {
   premium: {
     name: 'Business',
     priceDisplay: '99',
-    productId: 'prod_Ht4AVkvWOz6Nyn',
+    productId: process.env.BUSINESS_ID,
     price: 9900,
     description:
       'Your uptime is our uptime. Get premium support and top-tier access for businesses and production applications with lots of usage.',
