@@ -17,7 +17,7 @@ info:
 # ![demo](http://i.imgur.com/zNSWIag.gif)
 
 servers:
-  - url: https://api.boundaries.io
+  - url: https://api2.boundaries.io
 
 security:
   - ApiKeyAuth: []
