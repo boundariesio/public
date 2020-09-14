@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/layout/public';
 
 export default () => {
   return (
@@ -8,7 +8,7 @@ export default () => {
         <h1 className="text-3xl font-semibold border-b my-4 pb-4">Terms and Conditions</h1>
         <small className="italic">Revised as of June 23, 2020</small>
         <p className="py-2">
-          THE WEBSITE boundaries.io.COM (THE &quot;SITE&quot;) AND RELATED PLATFORMS, PRODUCTS, AND
+          THE WEBSITE boundaries.io (THE &quot;SITE&quot;) AND RELATED PLATFORMS, PRODUCTS, AND
           SERVICES AVAILABLE ON OR FROM THE SITE (THE &quot;SERVICES&quot;) ARE OWNED AND OPERATED
           BY boundaries.io. (TOGETHER WITH ITS AFFILIATES, SUCCESSORS, AND ASSIGNS HEREINAFTER
           REFERRED TO AS &quot;<span className="underline">OUR</span>&quot;, &quot;
