@@ -5,22 +5,24 @@ import 'leaflet/dist/leaflet.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapBoxGLLayer from './mapbox-gl-layer';
 
+const INITIAL_DELAY = 1400;
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 export default class Hero extends Component {
   state = {
     lat: 37.70017196507861,
     lng: -122.62021789550783,
-    zoom: 10
+    zoom: 11
   };
-  demo = () => {
-    let wait = 0;
-    setTimeout(() => {
-      states.forEach((state, i) => {
-        wait += state.duration;
-        setTimeout(async () => {
-          this.setState(state);
-        }, wait * 1000);
-      });
-    }, 1000);
+  demo = async () => {
+    await sleep(INITIAL_DELAY);
+    let i = 0;
+    while (i < 1000) {
+      const state = states[i % states.length];
+      this.setState(state);
+      await sleep(state.duration * 1000);
+      i += 1;
+    }
   };
   render() {
     if (typeof window == 'undefined') return null;
