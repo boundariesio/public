@@ -28,13 +28,13 @@ export default () => {
               We make geospatial boundary data easy
             </h1>
             <p className="text-xl lg:text-2xl mt-6 font-light">
-              You query, we deliver. Get accurate GeoJSON features for administrative, municipal,
-              and social geographic boundaries.
+              You query, we deliver. You can use this API to retrieve accurate GeoJSON features for administrative, municipal,
+              and social geographic boundaries like US ZIP codes, cities, and more. We've been helping companies and individuals make boundary maps since 2015.
             </p>
             <p className="text-center md:text-left mt-8 md:mt-12">
               <AnchorLink className="px-4" offset={40} href="#pricing">
                 <Button size="xl" className="font-bold bg-secondary hover:bg-secondary">
-                  Get an API key
+                  Register for API Access
                 </Button>
               </AnchorLink>
             </p>
