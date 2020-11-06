@@ -10,7 +10,7 @@ export default {
       'Access to the Community Edition API',
       'No credit card required',
       'Get an API key immediately',
-      'Up to 100 API calls per day'
+      'Up to 20 API calls per day'
     ],
     formId: 'a8343c12-3395-45f4-923a-97eb019c6c6c'
   },
