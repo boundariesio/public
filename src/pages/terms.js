@@ -10,7 +10,7 @@ export default () => {
         <p className="py-2">
           THE WEBSITE boundaries.io (THE &quot;SITE&quot;) AND RELATED PLATFORMS, PRODUCTS, AND
           SERVICES AVAILABLE ON OR FROM THE SITE (THE &quot;SERVICES&quot;) ARE OWNED AND OPERATED
-          BY boundaries.io. (TOGETHER WITH ITS AFFILIATES, SUCCESSORS, AND ASSIGNS HEREINAFTER
+          BY bitmode, LLC. (TOGETHER WITH ITS AFFILIATES, SUCCESSORS, AND ASSIGNS HEREINAFTER
           REFERRED TO AS &quot;<span className="underline">OUR</span>&quot;, &quot;
           <span className="underline">WE</span>&quot;, OR &quot;
           <span className="underline">US</span>&quot;).
@@ -43,16 +43,16 @@ export default () => {
             accurate, complete, and current and that you will promptly update your Registration
             Information as necessary such that it is, at all times, true, accurate, complete, and
             current. We may use all Registration Information, subject to our compliance with the
-            <a href="/privacy">boundaries.io Web Site Privacy Policy</a>. The Terms and Conditions
-            incorporate the terms and conditions set forth in the boundaries.io Web Site Privacy
-            Policy and boundaries.io Platform Privacy Policy. By accessing the Site and using the
-            Services, you are consenting to have your personal data used by us as set forth in the
-            boundaries.io Web Site Privacy Policy and boundaries.io Platform Privacy Policy. You
-            alone are responsible for maintaining the security of your Registration Information and
-            for all uses of the Site and Services in the name of your account. You are responsible
-            for maintaining access to the email address associated with your account. We are unable
-            to restore access to your account if you lose access to the email address associated
-            with the account.
+            <a href="/privacy">Boundaries Web Site Privacy Policy</a>. The Terms and Conditions
+            incorporate the terms and conditions set forth in the Boundaries Web Site Privacy Policy
+            and Boundaries Platform Privacy Policy. By accessing the Site and using the Services,
+            you are consenting to have your personal data used by us as set forth in the Boundaries
+            Web Site Privacy Policy and Boundaries Platform Privacy Policy. You alone are
+            responsible for maintaining the security of your Registration Information and for all
+            uses of the Site and Services in the name of your account. You are responsible for
+            maintaining access to the email address associated with your account. We are unable to
+            restore access to your account if you lose access to the email address associated with
+            the account.
           </li>
           <li>
             <b>AGE RESTRICTIONS</b>. You hereby represent and warrant that you are 18 years of age
@@ -131,8 +131,8 @@ export default () => {
               If you do not provide a valid payment method, or if your designated payment method is
               determined by us to be inactive for any reason, we may immediately discontinue
               providing Services to you. Purchases will appear on your credit or debit card
-              statements as &quot;boundaries.io&quot; You agree not to cause your credit or debit
-              card company to reverse or &quot;chargeback&quot; any Service Fees charged in
+              statements as &quot;Bitmode Boundaries&quot; You agree not to cause your credit or
+              debit card company to reverse or &quot;chargeback&quot; any Service Fees charged in
               accordance with these Terms and Conditions; and in the event you do so, we may
               terminate your use of the Site and Services, and you agree to reimburse us for any
               costs incurred in responding to such chargeback, including, without limitation, our
@@ -143,10 +143,9 @@ export default () => {
             <p className="py-2">
               We have the right to change your billing period at the renewal of your current
               contract, such that the new billing period results in an equal or lower effective
-              monthly rate compared to the current contract. For example, boundaries.io may decide
-              to provide additional payment flexibility to customers who have been active
-              subscribers for a year by offering the same discounted Annual plan, paid on a
-              Quarterly basis.
+              monthly rate compared to the current contract. For example, bitmode, LLC may decide to
+              provide additional payment flexibility to customers who have been active subscribers
+              for a year by offering the same discounted Annual plan, paid on a Quarterly basis.
             </p>
           </li>
           <li>
@@ -331,7 +330,9 @@ export default () => {
           </li>
         </ol>
         <p className="py-2">
-          <small className="py-2">&copy; 2020 boundaries.io. All rights reserved.</small>
+          <small className="py-2">
+            &copy; {new Date().getFullYear()} bitmode, LLC. All rights reserved.
+          </small>
         </p>
       </div>
     </Layout>
