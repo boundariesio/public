@@ -130,7 +130,7 @@ const RegistrationForm = ({ plan }) => {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="zip"
             >
-              Zip
+              ZIP Code
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -139,7 +139,7 @@ const RegistrationForm = ({ plan }) => {
               required
               value={zip}
               onChange={e => setZip(e.target.value)}
-              placeholder="12345"
+              placeholder="e.g. 10002"
             />
           </div>
         </div>
