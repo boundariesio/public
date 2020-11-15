@@ -25,11 +25,13 @@ export default () => {
         <div className="z-10 relative container py-2 md:py-2 mx-auto px-8 lg:flex">
           <div className="text-left w-100 md:w-3/4 lg:w-1/2">
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-none">
-              We make geospatial boundary data easy
+              A simple API for US GeoJSON map data
             </h1>
             <p className="text-xl lg:text-2xl mt-6 font-light">
-              You query, we deliver. You can use this API to retrieve accurate GeoJSON features for administrative, municipal,
-              and social geographic boundaries like US ZIP codes, cities, and more. We've been helping companies and individuals make boundary maps since 2015.
+              Boundaries is an easy-to-use HTTP API that allows you to retrieve geography polygons
+              in GeoJSON format. You can use that data to draw shaded city, ZIP code, county, or
+              state geographic boundaries. We store all of the data and make querying easy so you
+              can focus on adding value to your business and product.
             </p>
             <p className="text-center md:text-left mt-8 md:mt-12">
               <AnchorLink className="px-4" offset={40} href="#pricing">
@@ -39,7 +41,7 @@ export default () => {
               </AnchorLink>
             </p>
             <p className="text-center md:text-left mt-4 text-gray-600">
-              Try it before you buy it. No credit card required.
+              You can try it before you buy it. No credit card required.
             </p>
           </div>
         </div>
