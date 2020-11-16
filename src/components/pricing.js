@@ -43,10 +43,10 @@ export default () => {
   const [chosenKey, setChosenKey] = useState(null);
 
   return (
-    <Helmet>
-      <title>Boundaries by bitmode | Pricing</title>
-    </Helmet>
     <>
+      <Helmet>
+        <title>Boundaries by bitmode | Pricing</title>
+      </Helmet>
       <h1 className="text-center text-4xl text-black font-medium leading-snug tracking-wider">
         Pricing
       </h1>
