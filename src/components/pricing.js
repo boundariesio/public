@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import $ from 'jquery';
 import Modal from './modal';
@@ -42,6 +43,9 @@ export default () => {
   const [chosenKey, setChosenKey] = useState(null);
 
   return (
+    <Helmet>
+      <title>Boundaries by bitmode | Pricing</title>
+    </Helmet>
     <>
       <h1 className="text-center text-4xl text-black font-medium leading-snug tracking-wider">
         Pricing

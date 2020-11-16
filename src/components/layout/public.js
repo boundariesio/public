@@ -33,9 +33,9 @@ const Layout = ({ children, home }) => {
   }, []);
   return (
     <>
-      <Helmet title="boundaries.io" defer={false}>
+      <Helmet defer={false}>
         <meta charSet="utf-8" />
-        <title>boundaries.io - boundaries made easy</title>
+        <title>Boundaries by bitmode - GeoJSON made easy</title>
         <meta name="og:image" content={socialImg} />
         <meta
           name="description"
