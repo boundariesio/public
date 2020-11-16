@@ -2,10 +2,10 @@ openapi: 3.0.3
 
 info:
   version: 'v2'
-  title: boundaries.io Feature API
+  title: Boundaries Feature API
   description: |
     <br />
-    boundaries.io is an API for retrieving GeoJSON for common
+    Bitmode Boundaries is an API for retrieving GeoJSON for common
     US geographic topologies. Data is mostly comprised of US Census
     TIGER data—yielding up-to-date information on the
     census-defined geographies converted from Shapefile format.

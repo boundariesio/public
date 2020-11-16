@@ -10,7 +10,7 @@ export default () => {
         <p className="py-2">
           THE WEBSITE boundaries.io (THE &quot;SITE&quot;) AND RELATED PLATFORMS, PRODUCTS, AND
           SERVICES AVAILABLE ON OR FROM THE SITE (THE &quot;SERVICES&quot;) ARE OWNED AND OPERATED
-          BY bitmode, LLC. (TOGETHER WITH ITS AFFILIATES, SUCCESSORS, AND ASSIGNS HEREINAFTER
+          BY Bitmode, LLC. (TOGETHER WITH ITS AFFILIATES, SUCCESSORS, AND ASSIGNS HEREINAFTER
           REFERRED TO AS &quot;<span className="underline">OUR</span>&quot;, &quot;
           <span className="underline">WE</span>&quot;, OR &quot;
           <span className="underline">US</span>&quot;).
@@ -143,7 +143,7 @@ export default () => {
             <p className="py-2">
               We have the right to change your billing period at the renewal of your current
               contract, such that the new billing period results in an equal or lower effective
-              monthly rate compared to the current contract. For example, bitmode, LLC may decide to
+              monthly rate compared to the current contract. For example, Bitmode, LLC may decide to
               provide additional payment flexibility to customers who have been active subscribers
               for a year by offering the same discounted Annual plan, paid on a Quarterly basis.
             </p>
@@ -331,7 +331,7 @@ export default () => {
         </ol>
         <p className="py-2">
           <small className="py-2">
-            &copy; {new Date().getFullYear()} bitmode, LLC. All rights reserved.
+            &copy; {new Date().getFullYear()} Bitmode, LLC. All rights reserved.
           </small>
         </p>
       </div>

@@ -13,7 +13,7 @@ const Footer = () => (
           too.
         </p>
         <p>
-          <small>&copy; bitmode, LLC {new Date().getFullYear()}</small>
+          <small>&copy; Bitmode, LLC {new Date().getFullYear()}</small>
         </p>
       </div>
       <div className="flex-1 px-3">
