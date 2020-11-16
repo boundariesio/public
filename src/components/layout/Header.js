@@ -20,9 +20,10 @@ const Header = ({ home }) => {
     <header className="sticky top-0 bg-white shadow z-20">
       <div className="container flex flex-col sm:flex-row justify-between items-center mx-auto py-4 px-8">
         <div className="flex items-center">
-          <div className="w-56 sm:w-40">
+          <div className="w-56 sm:w-40 text-right">
             <a href="/">
               <LogoText />
+              by bitmode
             </a>
           </div>
         </div>

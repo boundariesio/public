@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import $ from 'jquery';
 import Modal from './modal';
