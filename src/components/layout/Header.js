@@ -23,6 +23,13 @@ const Header = ({ home }) => {
           <div className="w-56 sm:w-40 text-right">
             <a href="/">
               <LogoText />
+            </a>
+            <a
+              className="text-sm"
+              href="https://www.bitmode.xyz"
+              htmlTarget="_blank"
+              rel="noopener"
+            >
               by bitmode
             </a>
           </div>
