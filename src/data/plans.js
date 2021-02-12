@@ -1,17 +1,12 @@
 export default {
   hobby: {
-    name: 'Hobby',
-    priceDisplay: 'FREE',
+    name: 'Starter',
+    priceDisplay: '10',
     price: 0,
     productId: process.env.HOBBY_ID,
     description:
       'Get full access to build your Proof of Concept, test an idea, or use the data on a personal project.',
-    features: [
-      'Access to the Community Edition API',
-      'No credit card required',
-      'Get an API key immediately',
-      'Up to 20 API calls per day'
-    ],
+    features: ['3-day Trial Period', 'Up to 100 API calls per day', 'Upgrade at any time'],
     formId: 'a8343c12-3395-45f4-923a-97eb019c6c6c'
   },
   standard: {
@@ -24,7 +19,8 @@ export default {
     features: [
       'Access to the most up-to-date data and premium API',
       'Standard support',
-      '1K requests per day'
+      '1K requests per day',
+      'Upgrade at any time'
     ],
     formId: '620bf43e-a2bf-4c71-86a8-ed53d5b236fa'
   },

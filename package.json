@@ -11,6 +11,8 @@
     "start": "gatsby serve --host 0.0.0.0 --port 8001"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "1.2.2",
+    "@stripe/stripe-js": "1.12.1",
     "axios": "0.19.2",
     "core-js": "3.6.5",
     "gatsby": "^2.18.18",
