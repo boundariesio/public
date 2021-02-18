@@ -2,13 +2,12 @@ openapi: 3.0.3
 
 info:
   version: 'v2'
-  title: Boundaries Feature API
+  title: Bitmode Boundaries API
   description: |
     <br />
-    Bitmode Boundaries is an API for retrieving GeoJSON for common
-    US geographic topologies. Data is mostly comprised of US Census
-    TIGER data—yielding up-to-date information on the
-    census-defined geographies converted from Shapefile format.
+    Bitmode Boundaries is an API for retrieving GeoJSON polygons for common
+    US geographic topologies. Data is mostly comprised of up-to-date US Census
+    TIGER/Line Shapefile data.
     <br /><br />
     The API responds in `application/json` for all requests. Authentication is
     required for all endpoints.
@@ -128,6 +127,44 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/SearchResults'
+  '/geographies/{type}/geoid/{geoid}':
+    get:
+      tags: ['Feature Queries']
+      summary: 'Retrieve a feature by GEOID'
+      description: |
+        Features can be queried by `GEOID` via this endpoint.
+
+        All feature collections contain a standard geographic identifier (GEOID)
+        for each entity that links to the `GEOID` in the data from censuses and surveys.
+        For US postal-codes, `GEOID10` is used.
+
+        For more information, see [TIGER/Line Shapefiles Technical Documentation](https://www2.census.gov/geo/pdfs/maps-data/data/tiger/tgrshp2020/TGRSHP2020_TechDoc.pdf)
+      parameters:
+        - name: type
+          in: path
+          description: Feature collection to query
+          required: true
+          schema:
+            $ref: '#/components/schemas/FeatureType'
+        - name: geoid
+          in: path
+          description: Feature property GEOID
+          required: true
+          schema:
+            type: string
+            example: 12
+      responses:
+        '200':
+          description: Found feature
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feature'
+            application/topojson:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/NotFoundError'
   '/geographies/{type}/named/{nameid}':
     get:
       tags: ['Feature Queries']
