@@ -15,14 +15,8 @@ class AccountClient {
     return this.http.post(`/sessions`, { email });
   }
 
-  register({ firstName, lastName, productId, email, zip }) {
-    return this.http.post('/accounts', {
-      firstName,
-      lastName,
-      email,
-      zip,
-      productId
-    });
+  register(attrs) {
+    return this.http.post('/accounts', attrs);
   }
 }
 
