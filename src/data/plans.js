@@ -1,6 +1,6 @@
 const [lowVolumeProductId, lowVolumePriceId] = process.env.LOW_VOLUME_ID.split(':');
 const [standardProductId, standardPriceId] = process.env.STANDARD_ID.split(':');
-const [businessProductId, businessPriceId] = process.env.process.env.BUSINESS_ID.split(':');
+const [businessProductId, businessPriceId] = process.env.BUSINESS_ID.split(':');
 
 export default {
   hobby: {
