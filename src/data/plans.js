@@ -1,40 +1,55 @@
+const [lowVolumeProductId, lowVolumePriceId] = process.env.LOW_VOLUME_ID.split(':');
+const [standardProductId, standardPriceId] = process.env.STANDARD_ID.split(':');
+const [businessProductId, businessPriceId] = process.env.process.env.BUSINESS_ID.split(':');
+
 export default {
   hobby: {
-    name: 'Starter',
-    priceDisplay: '10',
-    price: 0,
-    productId: process.env.HOBBY_ID,
+    name: 'Low Volume',
+    priceDisplay: '15',
+    price: 1500,
+    productId: lowVolumeProductId,
+    priceId: lowVolumePriceId,
     description:
       'Get full access to build your Proof of Concept, test an idea, or use the data on a personal project.',
-    features: ['3-day Trial Period', 'Up to 100 API calls per day', 'Upgrade at any time'],
+    features: [
+      'Free 5-day trial period',
+      'Up to 300 API calls per day',
+      'Upgrade or cancel at any time'
+    ],
     formId: 'a8343c12-3395-45f4-923a-97eb019c6c6c'
   },
   standard: {
     name: 'Standard',
     priceDisplay: '29',
-    price: 1900,
-    productId: process.env.STANDARD_ID,
+    price: 2900,
+    productId: standardProductId,
+    priceId: standardPriceId,
     description:
       "Ready to use this API in production? We've got you. Subscribe to standard and make sure things are always running smoothly.",
     features: [
+      'Free 5-day trial Period',
       'Access to the most up-to-date data and premium API',
-      'Standard support',
+      'Support availabe on request',
       '1K requests per day',
-      'Upgrade at any time'
+      'Upgrade or cancel at any time'
     ],
     formId: '620bf43e-a2bf-4c71-86a8-ed53d5b236fa'
   },
   premium: {
     name: 'Business',
-    priceDisplay: '99',
-    productId: process.env.BUSINESS_ID,
-    price: 9900,
+    priceDisplay: '79',
+    productId: businessProductId,
+    priceId: businessPriceId,
+    price: 7900,
     description:
       'Your uptime is our uptime. Get premium support and top-tier access for businesses and production applications with lots of usage.',
     features: [
+      'Free 5-day trial period',
       'Access to the most up-to-date data and premium API',
-      'Premium Support',
-      '100K requests per day'
+      'Premium technical support',
+      '100K requests per day',
+      'Highest request throutput',
+      'Cancel at any time'
     ],
     formId: 'c4e48a0b-4904-4a7f-8825-bf846cd152a0'
   }

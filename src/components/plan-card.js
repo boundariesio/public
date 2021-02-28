@@ -1,6 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Plan from './types/plan';
 
-export default ({ key, plan, containerClass, children }) => {
+const propTypes = {
+  key: PropTypes.string.isRequired,
+  plan: Plan.isRequired,
+  showDescription: PropTypes.bool,
+  containerClass: PropTypes.string,
+  children: PropTypes.children
+};
+
+const PlanCard = (
+  { key, plan, showDescription, containerClass, children } = {
+    showDescription: false,
+    containerClass: ''
+  }
+) => {
   const standard = key === 'standard';
   return (
     <div className={containerClass}>
@@ -24,15 +39,14 @@ export default ({ key, plan, containerClass, children }) => {
               <span className="text-5xl">{plan.priceDisplay}</span> /mo
             </h2>
           ) : (
-            <h2 className="text-lg text-gray-700 text-center pb-8">
+            <h2 className="text-lg text-gray-700 text-center">
               <sup style={{ top: '-0.1em' }} className="text-sm inline-block">
                 {plan.priceDisplay === 'FREE' ? '' : '$'}
               </sup>
               {plan.priceDisplay} {plan.priceDisplay === 'FREE' ? '' : '/mo'}
             </h2>
           )}
-
-          {plan.description}
+          {showDescription && <p className="pt-4">{plan.description}</p>}
         </div>
 
         <div className="flex flex-wrap mt-6 px-6">
@@ -67,3 +81,7 @@ export default ({ key, plan, containerClass, children }) => {
     </div>
   );
 };
+
+PlanCard.propTypes = propTypes;
+
+export default PlanCard;
