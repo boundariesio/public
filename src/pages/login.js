@@ -18,6 +18,9 @@ export default () => {
   const [email, setEmail] = useState('');
   return (
     <Layout>
+      <Helmet>
+        <title>Bitmode Boundaries | Login</title>
+      </Helmet>
       <section id="testimonials" className="py-12 md:py-20 lg:py-40">
         <div className="container text-center mx-auto">
           <h2 className="text-lg sm:text-2xl pb-8">
