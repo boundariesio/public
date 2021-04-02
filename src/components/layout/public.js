@@ -35,7 +35,7 @@ const Layout = ({ children, home }) => {
     <>
       <Helmet defer={false}>
         <meta charSet="utf-8" />
-        <title>Boundaries by bitmode - GeoJSON made easy</title>
+        <title>Bitmode Boundaries | A GeoJSON boundary API</title>
         <meta name="og:image" content={socialImg} />
         <meta
           name="description"
