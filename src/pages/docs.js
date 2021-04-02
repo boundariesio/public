@@ -9,7 +9,7 @@ export default () => {
   return (
     <Layout>
       <Helmet>
-        <title>Boundaries by bitmode | API Documentation</title>
+        <title>Bitmode Boundaries | API Documentation</title>
       </Helmet>
       <RedocStandalone
         spec={spec}
