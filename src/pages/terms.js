@@ -4,6 +4,9 @@ import Layout from '../components/layout/public';
 export default () => {
   return (
     <Layout>
+      <Helmet>
+        <title>Bitmode Boundaries | Terms and Conditions</title>
+      </Helmet>
       <div className="container mx-auto py-5 max-w-4xl">
         <h1 className="text-3xl font-semibold border-b my-4 pb-4">Terms and Conditions</h1>
         <small className="italic">Revised as of June 23, 2020</small>
