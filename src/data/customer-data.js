@@ -7,7 +7,7 @@ export default [
     customerImage: 'https://placeimg.com/150/150/people',
   },
   {
-    title: "I'm pretty impressed by boundaries.io, this is super neat",
+    title: "I'm pretty impressed by boundaries, this is super neat",
     content: '',
     customerName: 'Fabien Allanic',
     customerTitle: 'Developer',
