@@ -11,12 +11,11 @@ info:
     <br /><br />
     The API responds in `application/json` for all requests. Authentication is
     required for all endpoints.
-    <br /><br />
-    The v2 API can be accessed at <strong>https://api2.boundaries.io</strong>
+    <br />
 # ![demo](http://i.imgur.com/zNSWIag.gif)
 
 servers:
-  - url: https://api2.boundaries.io
+  - url: https://boundaries.bitmode.dev/
 
 security:
   - ApiKeyAuth: []
