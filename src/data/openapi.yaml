@@ -15,7 +15,7 @@ info:
 # ![demo](http://i.imgur.com/zNSWIag.gif)
 
 servers:
-  - url: https://boundaries.bitmode.dev/
+  - url: https://boundaries.bitmode.dev
 
 security:
   - ApiKeyAuth: []
